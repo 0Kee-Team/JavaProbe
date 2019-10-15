@@ -73,7 +73,7 @@ A Java runtime information-gathering tool which uses the Java Attach API for inf
        3.Check legacy old vulnerabilities (time bombs) and development, which include high-risk services (like jolokia) (security baseline)
 
 #### Example:
-![](Https://i.bmp.ovh/imgs/2019/09/df7b2af94f8da804.png)
+![](https://i.bmp.ovh/imgs/2019/09/df7b2af94f8da804.png)
 
 #### References:
 Https://www.ibm.com/developerworks/cn/java/j-lo-jse61/index.html Java Instrumentation
