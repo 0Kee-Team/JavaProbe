@@ -111,7 +111,6 @@ public class NewAgentMain {
                                 // 添加到结果
                                 resultInfo.getJvmInfoList().add(jvmInfot);
 
-                                Runtime.getRuntime().exec("")
                             }
                         }
                     }
