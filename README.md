@@ -42,7 +42,18 @@ A Java runtime information-gathering tool which uses the Java Attach API for inf
             "jarPathMap": {
                 "file:/usr/local/tomcat/lib/": "",
                 "file:/usr/local/tomcat/webapps/webscan/WEB-INF/classes/": ""
-            }
+            },
+            "dependencyInfoList": [{
+			"version": "4.5.2",
+			"groupId": "org.apache.httpcomponents",
+			"artifactId": "httpclient"
+		}, {
+			"version": "3.1.0",
+			"groupId": "javax.servlet",
+			"artifactId": "javax.servlet-api"
+		}, {
+                ...
+                }
         }]
     }
         
