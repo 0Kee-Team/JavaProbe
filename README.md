@@ -53,7 +53,7 @@ A Java runtime information-gathering tool which uses the Java Attach API for inf
 			"artifactId": "javax.servlet-api"
 		},
         	{"...."}
-		}]
+		]
         }]
     }
         
