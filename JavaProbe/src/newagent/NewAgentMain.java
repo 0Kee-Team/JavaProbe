@@ -7,6 +7,7 @@ import entity.RunUserInfo;
 import com.sun.tools.attach.VirtualMachine;
 import com.sun.tools.attach.VirtualMachineDescriptor;
 import entity.ResultInfo;
+import maven.MavenHandle;
 import org.apache.commons.io.FileUtils;
 import runuser.RunHandle;
 
@@ -36,7 +37,7 @@ public class NewAgentMain {
 
             if (!"root".equals(runUser.toLowerCase().trim())) {
 
-                System.out.println("在没有指定运行用户的模式下,必须使用root用户运行!");
+                System.out.println("在没有指定运行用户的模式下,必须使用root用户运行!"); // 样子货
                 System.exit(0);
             }
 
@@ -74,6 +75,7 @@ public class NewAgentMain {
     public static String getResultFile() {
 
         String resultStr = null;
+        MavenHandle mavenHandle = new MavenHandle(); // 处理依赖
         ResultInfo resultInfo = new ResultInfo();
         resultInfo.setHostname(getHostName());
 
@@ -100,12 +102,19 @@ public class NewAgentMain {
 
                                 // 处理springboot的方法
                                 springBootHandle(jvmInfot);
-                                jvmInfot.getErrorList().clear(); // 把异常都抛掉
+                                // 清理掉所有的class数据,如果还需要收集的话可以注释下面的代码，这个一般是为了在没有jar的情况下去确定组件、应急排查rce加载的恶意class，判断高风险class
+                                //jvmInfot.getClassFileList().clear();
+                                // 把异常都抛掉
+                                jvmInfot.getErrorList().clear();
+                                // 获取依赖内容
+                                mavenHandle.getMavenResult(jvmInfot);
+                                // 添加到结果
                                 resultInfo.getJvmInfoList().add(jvmInfot);
+
+                                Runtime.getRuntime().exec("")
                             }
                         }
                     }
-
                 }
             }
 
@@ -234,14 +243,12 @@ public class NewAgentMain {
                     springBootLibget(jvmInfo, jarPath.substring(0,jarPath.indexOf("jar!")+3));
                 }
             }
-
         }
         catch (Exception e) {
 
             CommonUtil.writeStr("/tmp/jvm_error.txt","jqjq\t" + e.getMessage());
             System.out.println(e.getMessage());
         }
-
     }
 
     /**

@@ -1,5 +1,6 @@
 package entity;
 
+import java.security.PrivateKey;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -34,6 +35,16 @@ public class JvmInfo {
     private List<String> errorList = new ArrayList<String>(); // 为了方便错误排查 进行的错误收集
 
     private Map<String,String> jarPathMap = new HashMap<String, String>(); // 存放可能存在jar的路径呀
+
+    private List<DependencyInfo> dependencyInfoList = new ArrayList<DependencyInfo>(); // 存放jar包依赖，用于生成依赖文件，方便对整个应用进行漏洞跟踪
+
+    public List<DependencyInfo> getDependencyInfoList() {
+        return dependencyInfoList;
+    }
+
+    public void setDependencyInfoList(List<DependencyInfo> dependencyInfoList) {
+        this.dependencyInfoList = dependencyInfoList;
+    }
 
     public String getExceTime() {
         return exceTime;

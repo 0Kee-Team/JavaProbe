@@ -1,4 +1,0 @@
-Manifest-Version: 1.0
-Main-Class: newagent.NewAgentMain
-Agent-Class: newagent.HookMain
-Can-Redefine-Classes: true
